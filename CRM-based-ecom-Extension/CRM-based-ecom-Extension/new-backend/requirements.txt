@@ -1,0 +1,19 @@
+setuptools>=42
+scikit-learn
+shap
+lime
+joblib
+python-multipart
+jinja2
+scipy
+requests    
+matplotlib  # SHAP dependency
+wheel
+build
+fastapi
+uvicorn
+pandas
+numpy<2.0.0
+scikit-learn
+shap==0.44.1
+

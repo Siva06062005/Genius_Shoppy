@@ -1,0 +1,10 @@
+[
+  { "CustomerID": 101, "Recency": 12, "Frequency": 6, "Monetary": 84500, "Segment": "Gold VIP", "City": "Bengaluru" },
+  { "CustomerID": 102, "Recency": 25, "Frequency": 4, "Monetary": 46200, "Segment": "Gold VIP", "City": "Mumbai" },
+  { "CustomerID": 103, "Recency": 78, "Frequency": 3, "Monetary": 19400, "Segment": "Regular", "City": "Delhi NCR" },
+  { "CustomerID": 104, "Recency": 110, "Frequency": 2, "Monetary": 12800, "Segment": "Regular", "City": "Hyderabad" },
+  { "CustomerID": 105, "Recency": 220, "Frequency": 2, "Monetary": 52000, "Segment": "At-Risk", "City": "Chennai" },
+  { "CustomerID": 106, "Recency": 45, "Frequency": 3, "Monetary": 18500, "Segment": "Regular", "City": "Pune" },
+  { "CustomerID": 107, "Recency": 95, "Frequency": 2, "Monetary": 14200, "Segment": "Regular", "City": "Ahmedabad" },
+  { "CustomerID": 108, "Recency": 32, "Frequency": 1, "Monetary": 3800, "Segment": "New Shopper", "City": "Kolkata" }
+]

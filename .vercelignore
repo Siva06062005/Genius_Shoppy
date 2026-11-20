@@ -1,0 +1,17 @@
+# Vercel Ignore file
+__pycache__/
+*.pyc
+*.pkl
+*.npz
+*.parquet
+*.zip
+.git/
+.venv/
+env/
+venv/
+*.log
+CRM-based-ecom-Extension/new-backend latt.zip
+CRM-based-ecom-Extension/projectiles.zip
+CRM-based-ecom-Extension/smartshopper_extension.zip
+CRM-based-ecom-Extension/web_extension.zip
+CRM-based-ecom-Extension/AnalystGUI_Niotron_AllScreens.zip

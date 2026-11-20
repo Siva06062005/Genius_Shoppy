@@ -1,0 +1,110 @@
+[
+  {
+    "id": "oneplus-12",
+    "name": "OnePlus 12 5G (16GB RAM, 512GB)",
+    "category": "Smartphones",
+    "mrp": 69999,
+    "lowestPrice": 64999,
+    "bestStore": "Flipkart",
+    "rating": 4.6,
+    "reviewsCount": 12480,
+    "priceDropTrend": "30-Day Low",
+    "stores": [
+      { "name": "Flipkart", "price": 64999, "mrp": 69999, "link": "https://www.flipkart.com/search?q=OnePlus+12", "tag": "Best Price", "badge": "Flipkart Assured", "offer": "5% Unlimited Cashback on Axis Bank" },
+      { "name": "Amazon.in", "price": 65998, "mrp": 69999, "link": "https://www.amazon.in/s?k=OnePlus+12", "tag": "Prime 1-Day", "badge": "Prime", "offer": "Flat ₹1,500 Off with HDFC Card" },
+      { "name": "Croma", "price": 66490, "mrp": 69999, "link": "https://www.croma.com/search/?text=OnePlus+12", "tag": "Store Pickup", "badge": "Tata Neu", "offer": "₹1,000 Off on ICICI Cards" },
+      { "name": "Reliance Digital", "price": 65490, "mrp": 69999, "link": "https://www.reliancedigital.in/search?q=OnePlus+12", "tag": "Authorized", "badge": "Official", "offer": "No Cost EMI up to 12 months" }
+    ],
+    "history": [69999, 68499, 67999, 66499, 65499, 64999]
+  },
+  {
+    "id": "iphone-15",
+    "name": "Apple iPhone 15 (128 GB) - Black",
+    "category": "Smartphones",
+    "mrp": 79900,
+    "lowestPrice": 69999,
+    "bestStore": "Flipkart",
+    "rating": 4.7,
+    "reviewsCount": 42100,
+    "priceDropTrend": "Festive Discount",
+    "stores": [
+      { "name": "Flipkart", "price": 69999, "mrp": 79900, "link": "https://www.flipkart.com/search?q=iPhone+15", "tag": "Lowest Price", "badge": "Flipkart Assured", "offer": "Extra ₹4,000 on SBI Credit Cards" },
+      { "name": "Amazon.in", "price": 70990, "mrp": 79900, "link": "https://www.amazon.in/s?k=iPhone+15", "tag": "Fast Delivery", "badge": "Prime", "offer": "5% Back on Amazon Pay ICICI Card" },
+      { "name": "Croma", "price": 72490, "mrp": 79900, "link": "https://www.croma.com/search/?text=iPhone+15", "tag": "Instant Pickup", "badge": "Tata Neu", "offer": "Tata Neu 5% Reward Coins" },
+      { "name": "Reliance Digital", "price": 71990, "mrp": 79900, "link": "https://www.reliancedigital.in/search?q=iPhone+15", "tag": "Official Apple", "badge": "Official", "offer": "Instant Cashback ₹3,000 on HDFC" }
+    ],
+    "history": [79900, 77900, 75990, 73499, 71999, 69999]
+  },
+  {
+    "id": "sony-wh1000xm5",
+    "name": "Sony WH-1000XM5 Wireless Noise Cancelling Headphones",
+    "category": "Audio",
+    "mrp": 34990,
+    "lowestPrice": 26990,
+    "bestStore": "Amazon.in",
+    "rating": 4.6,
+    "reviewsCount": 8940,
+    "priceDropTrend": "Price Drop 23%",
+    "stores": [
+      { "name": "Amazon.in", "price": 26990, "mrp": 34990, "link": "https://www.amazon.in/s?k=Sony+WH-1000XM5", "tag": "Best Deal", "badge": "Prime", "offer": "Coupon Applied: Extra ₹2,000 Off" },
+      { "name": "Flipkart", "price": 27490, "mrp": 34990, "link": "https://www.flipkart.com/search?q=Sony+WH-1000XM5", "tag": "Lowest Price", "badge": "Flipkart Assured", "offer": "5% Axis Bank Cashback" },
+      { "name": "Croma", "price": 28990, "mrp": 34990, "link": "https://www.croma.com/search/?text=Sony+WH-1000XM5", "tag": "In-Store Demo", "badge": "Tata Neu", "offer": "Free Carry Case + Warranty" },
+      { "name": "Reliance Digital", "price": 27990, "mrp": 34990, "link": "https://www.reliancedigital.in/search?q=Sony+WH-1000XM5", "tag": "Authorized", "badge": "Official", "offer": "₹1,500 HDFC Card Discount" }
+    ],
+    "history": [34990, 31990, 29990, 28490, 27490, 26990]
+  },
+  {
+    "id": "macbook-air-m2",
+    "name": "Apple MacBook Air M2 Chip (8GB Unified RAM, 256GB SSD)",
+    "category": "Laptops",
+    "mrp": 99900,
+    "lowestPrice": 88990,
+    "bestStore": "Flipkart",
+    "rating": 4.8,
+    "reviewsCount": 16400,
+    "priceDropTrend": "All-Time Low",
+    "stores": [
+      { "name": "Flipkart", "price": 88990, "mrp": 99900, "link": "https://www.flipkart.com/search?q=MacBook+Air+M2", "tag": "Best Price", "badge": "Flipkart Assured", "offer": "Flat ₹5,000 Instant Discount on HDFC" },
+      { "name": "Amazon.in", "price": 89990, "mrp": 99900, "link": "https://www.amazon.in/s?k=MacBook+Air+M2", "tag": "Prime 1-Day", "badge": "Prime", "offer": "No Cost EMI up to 18 months" },
+      { "name": "Croma", "price": 91990, "mrp": 99900, "link": "https://www.croma.com/search/?text=MacBook+Air+M2", "tag": "Student Discount", "badge": "Tata Neu", "offer": "Extra ₹8,000 Student Discount" },
+      { "name": "Reliance Digital", "price": 90490, "mrp": 99900, "link": "https://www.reliancedigital.in/search?q=MacBook+Air+M2", "tag": "Official Apple", "badge": "Official", "offer": "Free Laptop Sleeve included" }
+    ],
+    "history": [99900, 96900, 93900, 91490, 89990, 88990]
+  },
+  {
+    "id": "samsung-s24-ultra",
+    "name": "Samsung Galaxy S24 Ultra 5G AI Smartphone (12GB, 256GB)",
+    "category": "Smartphones",
+    "mrp": 134999,
+    "lowestPrice": 121999,
+    "bestStore": "Amazon.in",
+    "rating": 4.7,
+    "reviewsCount": 6720,
+    "priceDropTrend": "Festive Special",
+    "stores": [
+      { "name": "Amazon.in", "price": 121999, "mrp": 134999, "link": "https://www.amazon.in/s?k=Samsung+S24+Ultra", "tag": "Best Value", "badge": "Prime", "offer": "₹6,000 Upgrade Bonus on Exchange" },
+      { "name": "Flipkart", "price": 122999, "mrp": 134999, "link": "https://www.flipkart.com/search?q=Samsung+S24+Ultra", "tag": "Top Rated", "badge": "Flipkart Assured", "offer": "5% Axis Bank Cashback" },
+      { "name": "Croma", "price": 124999, "mrp": 134999, "link": "https://www.croma.com/search/?text=Samsung+S24+Ultra", "tag": "Store Demo", "badge": "Tata Neu", "offer": "Free Wireless Charger Pad" },
+      { "name": "Reliance Digital", "price": 123499, "mrp": 134999, "link": "https://www.reliancedigital.in/search?q=Samsung+S24+Ultra", "tag": "Official Samsung", "badge": "Official", "offer": "No Cost EMI ₹10,166/month" }
+    ],
+    "history": [134999, 131999, 128999, 125999, 123999, 121999]
+  },
+  {
+    "id": "boat-airdopes-141",
+    "name": "boAt Airdopes 141 ANC TWS Earbuds (42H Playtime)",
+    "category": "Audio",
+    "mrp": 3990,
+    "lowestPrice": 1299,
+    "bestStore": "Flipkart",
+    "rating": 4.2,
+    "reviewsCount": 182400,
+    "priceDropTrend": "Deal of the Day",
+    "stores": [
+      { "name": "Flipkart", "price": 1299, "mrp": 3990, "link": "https://www.flipkart.com/search?q=boAt+Airdopes+141", "tag": "67% Off", "badge": "Flipkart Assured", "offer": "Extra ₹100 Off on UPI Payments" },
+      { "name": "Amazon.in", "price": 1399, "mrp": 3990, "link": "https://www.amazon.in/s?k=boAt+Airdopes+141", "tag": "Prime Delivery", "badge": "Prime", "offer": "Amazon Pay ₹50 Cashback" },
+      { "name": "Croma", "price": 1499, "mrp": 3990, "link": "https://www.croma.com/search/?text=boAt+Airdopes+141", "tag": "Available", "badge": "Tata Neu", "offer": "Buy 2 Get Extra 10% Off" },
+      { "name": "Reliance Digital", "price": 1399, "mrp": 3990, "link": "https://www.reliancedigital.in/search?q=boAt+Airdopes+141", "tag": "Genuine", "badge": "Official", "offer": "Standard 1-Year Warranty" }
+    ],
+    "history": [3990, 2499, 1999, 1699, 1499, 1299]
+  }
+]

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartShopper AI India</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      width: 360px;
+      background: #0d1220;
+      color: #f8fafc;
+      padding: 14px;
+      font-size: 13px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #6366f1, #0ea5e9);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .brand-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+    }
+    .brand-badge {
+      font-size: 10px;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .active-page-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+    .active-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+    .btn-analyze {
+      width: 100%;
+      padding: 10px 14px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .btn-analyze:hover { opacity: 0.92; }
+    .btn-analyze:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+    #loading {
+      margin-top: 12px;
+      color: #38bdf8;
+      font-size: 12px;
+      text-align: center;
+      display: none;
+    }
+    #result {
+      margin-top: 12px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 12px;
+      max-height: 280px;
+      overflow-y: auto;
+      line-height: 1.6;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    #result strong { color: #fff; }
+    .deal-badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    .coupon-tag {
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px dashed rgba(99, 102, 241, 0.5);
+      color: #a5b4fc;
+      font-family: monospace;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .footer-bar {
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #64748b;
+    }
+    .footer-bar a { color: #818cf8; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">
+      <div class="brand-icon">🛒</div>
+      <div class="brand-title">SmartShopper AI</div>
+    </div>
+    <span class="brand-badge">India 🇮🇳</span>
+  </div>
+
+  <div class="active-page-box">
+    <div class="active-dot"></div>
+    <span id="activeStoreLabel">Ready to scan Flipkart & Amazon India</span>
+  </div>
+
+  <button class="btn-analyze" id="analyzeDeals">✨ Check Deals & Coupons</button>
+  
+  <div id="loading">⚡ Scanning Flipkart, Amazon.in & Bank Offers...</div>
+  
+  <div id="result">
+    Browse any product on <strong>Flipkart</strong> or <strong>Amazon India</strong>, then click above to detect hidden bank offers, price drops, and store comparisons!
+  </div>
+
+  <div class="footer-bar">
+    <span>Genius Shoppy v2.0</span>
+    <a href="http://localhost:3000" target="_blank">Open Full Dashboard</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Genius Shoppy | Lightning AI Shopping & Retail Intelligence</title>
+  <meta name="description" content="Next-Gen AI Shopping Assistant & Deal Radar. Real-time price tracking across Flipkart, Amazon India, Croma & Reliance. Instant bank card discount stacker.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient cybernetic mesh glow -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <!-- Real-Time Ticker Tape -->
+  <div class="live-ticker-wrap">
+    <div class="ticker-label"><span class="pulse-dot"></span> LIVE DEALS RADAR</div>
+    <div class="ticker-content" id="tickerContent">
+      <span class="ticker-item"><i class="fa-solid fa-bolt text-amber"></i> OnePlus 12 5G dropped by ₹5,000 on Flipkart (Now ₹64,999)</span>
+      <span class="ticker-item"><i class="fa-brands fa-amazon text-amber"></i> Amazon Prime: Extra ₹1,500 HDFC Card discount unlocked</span>
+      <span class="ticker-item"><i class="fa-solid fa-fire text-rose"></i> Apple MacBook Air M2 hit all-time low of ₹88,990</span>
+      <span class="ticker-item"><i class="fa-solid fa-tag text-emerald"></i> Sony WH-1000XM5: ₹8,000 festive coupon verified</span>
+      <span class="ticker-item"><i class="fa-solid fa-clock text-blue"></i> Bengaluru shopper just saved ₹4,250 on Samsung S24 Ultra</span>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="logo-icon">
+          <i class="fa-solid fa-bolt-lightning"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">GENIUS<span class="highlight">SHOPPY</span></span>
+          <span class="brand-badge"><i class="fa-solid fa-shield-halved"></i> Genius Shoppy AI v3.0</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-links" id="desktopNavLinks">
+        <button class="nav-btn active" data-tab="deal-finder" id="tab-deals-btn">
+          <i class="fa-solid fa-radar"></i> Deal Radar
+        </button>
+        <button class="nav-btn" data-tab="card-stacker" id="tab-stacker-btn">
+          <i class="fa-solid fa-credit-card"></i> Card Stacker
+        </button>
+        <button class="nav-btn" data-tab="simulator" id="tab-simulator-btn">
+          <i class="fa-brands fa-chrome"></i> Extension HUD
+        </button>
+        <button class="nav-btn" data-tab="coupons" id="tab-coupons-btn">
+          <i class="fa-solid fa-ticket"></i> Vault Coupons
+        </button>
+        <button class="nav-btn" data-tab="analytics" id="tab-analytics-btn">
+          <i class="fa-solid fa-chart-line"></i> ML Intelligence
+        </button>
+        <button class="nav-btn" data-tab="profiler" id="tab-profiler-btn">
+          <i class="fa-solid fa-database"></i> 5.8K Customers
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <div class="shoppy-coin-wallet" id="shoppyWallet" onclick="claimDailyCoins()" title="Click to claim daily Shoppy Coins!">
+          <i class="fa-solid fa-coins text-amber"></i>
+          <span class="coin-count" id="coinCount">1,250</span>
+          <span class="coin-tag">COINS</span>
+          <span class="coin-claim-btn">+100</span>
+        </div>
+        <a href="smartshopper_extension.zip" download="smartshopper_extension.zip" class="action-pill-btn download-pill">
+          <i class="fa-solid fa-download"></i> Get Extension
+        </a>
+        <button class="action-pill-btn vercel-pill" onclick="switchTab('guide')">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Vercel Deploy
+        </button>
+        <button class="mobile-toggle-btn" id="mobileToggleBtn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+      <button class="mobile-menu-link active" onclick="mobileSelectTab('deal-finder')"><i class="fa-solid fa-radar"></i> Deal Radar</button>
+      <button class="mobile-menu-link" onclick="mobileSelectTab('card-stacker')"><i class="fa-solid fa-credit-card"></i> Card Stacker Calculator</button>
+      <button class="mobile-menu-link" onclick="mobileSelectTab('simulator')"><i class="fa-brands fa-chrome"></i> Extension Live Demo</button>
+      <button class="mobile-menu-link" onclick="mobileSelectTab('coupons')"><i class="fa-solid fa-ticket"></i> Bank Offers & Coupons</button>
+      <button class="mobile-menu-link" onclick="mobileSelectTab('analytics')"><i class="fa-solid fa-chart-line"></i> ML Customer Intelligence</button>
+      <button class="mobile-menu-link" onclick="mobileSelectTab('profiler')"><i class="fa-solid fa-database"></i> 5,878 Real Customers</button>
+      <button class="mobile-menu-link" onclick="mobileSelectTab('guide')"><i class="fa-solid fa-rocket"></i> Vercel Hosting Guide</button>
+      <div class="mobile-menu-actions">
+        <a href="smartshopper_extension.zip" download="smartshopper_extension.zip" class="primary-cta-btn" style="text-decoration:none; justify-content:center;">
+          <i class="fa-solid fa-download"></i> Download Chrome Extension (.zip)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Swagger -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="live-blink"></span> Built for shoppers who refuse to pay full price
+      </div>
+      <h1 class="hero-title">
+        The Anti-Surge <br>
+        <span class="gradient-text">AI Shopping Intelligence.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Why trust retailer surge pricing? Genius Shoppy scans <strong>Flipkart, Amazon India, Croma, Reliance Digital & Myntra</strong> simultaneously, stacks hidden bank cashbacks, and tells you whether to <strong>BUY NOW</strong> or <strong>WAIT FOR THE DROP</strong>.
+      </p>
+
+      <div class="hero-stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          <div class="stat-info">
+            <span class="stat-value" id="statSavings">₹5,420</span>
+            <span class="stat-label">Avg. Savings per Cart</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-database"></i></div>
+          <div class="stat-info">
+            <span class="stat-value">5,878 Records</span>
+            <span class="stat-label">K-Means Customer Dataset</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="stat-info">
+            <span class="stat-value">5 Stores</span>
+            <span class="stat-label">Cross-Store Comparison</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fa-solid fa-bolt"></i></div>
+          <div class="stat-info">
+            <span class="stat-value">Zero Delay</span>
+            <span class="stat-label">Instant Card Math</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Tabs Workspace -->
+  <main class="main-container">
+    
+    <!-- TAB 1: Deal Radar (Live Search & Comparison) -->
+    <div class="tab-pane active" id="pane-deal-finder">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-radar text-blue"></i> Real-Time Deal Radar™</h2>
+          <p class="section-desc">Live multi-store price monitoring with price surge detection & bank discount stacking.</p>
+        </div>
+      </div>
+
+      <!-- Real-Time Loot Glitches & Instant Price Drops Stream -->
+      <div class="loot-glitches-section">
+        <div class="glitch-header-bar">
+          <div class="glitch-title-group">
+            <span class="pulse-fire-badge"><i class="fa-solid fa-fire text-rose"></i> REAL-TIME LOOT RADAR</span>
+            <span class="glitch-subtitle">Live Price Anomalies & Error-Fares Detected Across Indian Retailers</span>
+          </div>
+          <div class="glitch-live-status">
+            <span class="pulse-dot-green"></span> 3 Verified Glitches Active
+          </div>
+        </div>
+
+        <div class="glitch-cards-grid">
+          <!-- Glitch Card 1 -->
+          <div class="glitch-card">
+            <div class="glitch-top">
+              <span class="glitch-badge glitch-red"><i class="fa-solid fa-bolt"></i> 75% OFF GLITCH</span>
+              <span class="glitch-timer" id="timerGlitch1"><i class="fa-regular fa-clock"></i> 01h 14m</span>
+            </div>
+            <div class="glitch-title">boAt Airdopes 141 ANC (42H Battery, ENx)</div>
+            <div class="glitch-pricing">
+              <span class="glitch-price-now">₹999</span>
+              <span class="glitch-price-mrp">₹3,990</span>
+              <span class="glitch-drop-tag">-₹2,991</span>
+            </div>
+            <div class="glitch-perk">⚡ Flipkart Instant Price Drop + ₹50 UPI Cashback. Price anomaly verified!</div>
+            <button class="glitch-buy-btn" onclick="snagGlitchDeal('boAt Airdopes 141 ANC', 'Flipkart', 'https://www.flipkart.com/search?q=boAt+Airdopes+141+ANC', 'UPISAVE50')">
+              <i class="fa-solid fa-bolt"></i> Snag Glitch Deal
+            </button>
+          </div>
+
+          <!-- Glitch Card 2 -->
+          <div class="glitch-card">
+            <div class="glitch-top">
+              <span class="glitch-badge glitch-green"><i class="fa-solid fa-award"></i> ALL-TIME LOW</span>
+              <span class="glitch-timer" id="timerGlitch2"><i class="fa-regular fa-clock"></i> 03h 42m</span>
+            </div>
+            <div class="glitch-title">Sony WH-1000XM5 Wireless ANC Headphones</div>
+            <div class="glitch-pricing">
+              <span class="glitch-price-now">₹25,490</span>
+              <span class="glitch-price-mrp">₹34,990</span>
+              <span class="glitch-drop-tag">-₹9,500</span>
+            </div>
+            <div class="glitch-perk">⚡ Amazon Prime + ₹1,500 HDFC Instant Card Off (Net: ₹23,990).</div>
+            <button class="glitch-buy-btn" onclick="snagGlitchDeal('Sony WH-1000XM5 ANC', 'Amazon.in', 'https://www.amazon.in/s?k=Sony+WH-1000XM5', 'AMZNHDFC1500')">
+              <i class="fa-solid fa-bolt"></i> Snag Deal (Save ₹9.5K)
+            </button>
+          </div>
+
+          <!-- Glitch Card 3 -->
+          <div class="glitch-card">
+            <div class="glitch-top">
+              <span class="glitch-badge glitch-blue"><i class="fa-solid fa-tag"></i> FESTIVAL STEAL</span>
+              <span class="glitch-timer" id="timerGlitch3"><i class="fa-regular fa-clock"></i> 05h 18m</span>
+            </div>
+            <div class="glitch-title">Apple MacBook Air M2 (8GB Unified, 256GB SSD)</div>
+            <div class="glitch-pricing">
+              <span class="glitch-price-now">₹88,990</span>
+              <span class="glitch-price-mrp">₹99,900</span>
+              <span class="glitch-drop-tag">-₹10,910</span>
+            </div>
+            <div class="glitch-perk">⚡ Flipkart Assured + ₹5,000 SBI Card Off (Net: ₹83,990).</div>
+            <button class="glitch-buy-btn" onclick="snagGlitchDeal('Apple MacBook Air M2', 'Flipkart', 'https://www.flipkart.com/search?q=MacBook+Air+M2', 'FKAXIS5')">
+              <i class="fa-solid fa-bolt"></i> Snag Mac Deal
+            </button>
+          </div>
+
+          <!-- Glitch Card 4 -->
+          <div class="glitch-card">
+            <div class="glitch-top">
+              <span class="glitch-badge glitch-red"><i class="fa-solid fa-fire"></i> ₹15K DROP</span>
+              <span class="glitch-timer" id="timerGlitch4"><i class="fa-regular fa-clock"></i> 02h 05m</span>
+            </div>
+            <div class="glitch-title">Samsung Galaxy S24 Ultra 5G AI (256GB)</div>
+            <div class="glitch-pricing">
+              <span class="glitch-price-now">₹1,19,999</span>
+              <span class="glitch-price-mrp">₹1,34,999</span>
+              <span class="glitch-drop-tag">-₹15,000</span>
+            </div>
+            <div class="glitch-perk">⚡ Direct ₹10,000 price slash + ₹5,000 HDFC Card bonus!</div>
+            <button class="glitch-buy-btn" onclick="snagGlitchDeal('Samsung S24 Ultra', 'Amazon.in', 'https://www.amazon.in/s?k=Samsung+S24+Ultra', 'AMZNHDFC1500')">
+              <i class="fa-solid fa-bolt"></i> Snag Flagship Drop
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Search Box with Direct URL Ingestion -->
+      <div class="glass-card search-hero-card">
+        <div class="search-box-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="dealSearchInput" class="deal-search-input" placeholder="Search product name OR paste direct Flipkart / Amazon India link..." value="OnePlus 12 5G (16GB RAM, 512GB)">
+          <button class="btn-search-deals" id="btnRunDealSearch">
+            <i class="fa-solid fa-bolt"></i> Scan Live Prices
+          </button>
+        </div>
+        
+        <div class="quick-tags">
+          <span class="quick-tag-label"><i class="fa-solid fa-fire text-amber"></i> Quick Scan:</span>
+          <button class="quick-tag-btn" data-query="OnePlus 12 5G (16GB RAM, 512GB)">OnePlus 12 (16GB/512GB)</button>
+          <button class="quick-tag-btn" data-query="Apple iPhone 15 (128 GB) - Black">iPhone 15 128GB</button>
+          <button class="quick-tag-btn" data-query="Sony WH-1000XM5 Wireless Noise Cancelling Headphones">Sony WH-1000XM5 ANC</button>
+          <button class="quick-tag-btn" data-query="Apple MacBook Air M2 Chip (8GB Unified RAM, 256GB SSD)">MacBook Air M2</button>
+          <button class="quick-tag-btn" data-query="Samsung Galaxy S24 Ultra 5G AI Smartphone (12GB, 256GB)">Samsung S24 Ultra</button>
+          <button class="quick-tag-btn" data-query="boAt Airdopes 141 ANC TWS Earbuds (42H Playtime)">boAt Airdopes 141</button>
+        </div>
+      </div>
+
+      <!-- Live Result Display Card -->
+      <div class="deal-results-container" id="dealResultsContainer">
+        <div class="glass-card deal-insight-card">
+          <div class="deal-card-top">
+            <div class="deal-title-block">
+              <span class="badge-source"><i class="fa-solid fa-microchip"></i> Lightning Deal Intelligence</span>
+              <h3 id="dealProductTitle">Best Price Intelligence: OnePlus 12 5G (16GB RAM, 512GB)</h3>
+            </div>
+            <div class="deal-verdict-pill buy" id="dealVerdictPill">
+              <i class="fa-solid fa-circle-check"></i> BUY NOW — 30-Day Low
+            </div>
+          </div>
+
+          <!-- Surge Shield™ Price Integrity Meter -->
+          <div class="surge-shield-meter" id="surgeShieldMeter">
+            <div class="surge-meter-left">
+              <div class="surge-meter-icon"><i class="fa-solid fa-shield-halved text-emerald"></i></div>
+              <div>
+                <div class="surge-meter-title">Surge Shield™: 0% Fake Markup Detected</div>
+                <div class="surge-meter-desc">Verified genuine deal! Seller has not inflated base price ahead of sales.</div>
+              </div>
+            </div>
+            <div class="surge-meter-badge verified">
+              <i class="fa-solid fa-lock"></i> TRUE LOWEST BENCHMARK
+            </div>
+          </div>
+
+          <!-- Store Grid -->
+          <div class="platform-comparison-grid" id="platformGrid">
+            <!-- Injected dynamically -->
+          </div>
+
+          <!-- AI Intelligence Breakdown -->
+          <div class="deal-body-content mt-6" id="dealAiResponseText">
+            <!-- Injected dynamically -->
+          </div>
+
+          <!-- Price History Chart -->
+          <div class="price-history-container mt-6">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-tag purple">Anti-Surge Tracker</span>
+                <h3>90-Day Price Curve (Flipkart vs Amazon India)</h3>
+              </div>
+              <span class="mini-badge"><i class="fa-solid fa-circle text-emerald"></i> Current Price: Best Historical Window</span>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="priceHistoryChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The 5 Sovereign Intelligence Pillars of Genius Shoppy AI -->
+      <div class="genius-pillars-card">
+        <div class="pillars-header">
+          <span class="pulse-fire-badge" style="display:inline-flex; margin-bottom:0.6rem;"><i class="fa-solid fa-bolt-lightning text-amber"></i> CORE ARCHITECTURE</span>
+          <h3 class="pillars-title">The 5 Sovereign Intelligence Pillars of Genius Shoppy AI</h3>
+          <p class="pillars-subtitle">Engineered specifically for the Indian retail ecosystem — zero gimmicks, uncompromising privacy, and verifiable machine learning.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <!-- Pillar 1 -->
+          <div class="pillar-card">
+            <div class="pillar-card-top">
+              <div class="pillar-icon cyan"><i class="fa-solid fa-user-shield"></i></div>
+              <span class="pillar-status-pill cyan"><i class="fa-solid fa-check"></i> 100% PRIVATE</span>
+            </div>
+            <h4 class="pillar-card-title">100% Client-Side Privacy</h4>
+            <p class="pillar-card-desc">Zero email access needed. Runs directly in your browser! We never read your personal inbox, scrape order confirmation emails, or store your private receipts on third-party servers.</p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-card">
+            <div class="pillar-card-top">
+              <div class="pillar-icon emerald"><i class="fa-solid fa-network-wired"></i></div>
+              <span class="pillar-status-pill emerald"><i class="fa-solid fa-check"></i> 5 STORES SYNCED</span>
+            </div>
+            <h4 class="pillar-card-title">Live Multi-Store DOM Scrapers</h4>
+            <p class="pillar-card-desc">Scrapes Flipkart, Amazon India, Croma, Reliance Digital & Myntra in real-time. Redundant selectors and local FIFO queuing ensure data integrity even through network dropouts.</p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-card">
+            <div class="pillar-card-top">
+              <div class="pillar-icon purple"><i class="fa-solid fa-shield-halved"></i></div>
+              <span class="pillar-status-pill purple"><i class="fa-solid fa-check"></i> ACTIVE DEFENSE</span>
+            </div>
+            <h4 class="pillar-card-title">Surge Shield™ Technology</h4>
+            <p class="pillar-card-desc">Detects when sellers artificially hike prices right before festive sales. Compares 90-day pricing curves against MRP to verify whether a "sale discount" is genuine or a fake markup.</p>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-card">
+            <div class="pillar-card-top">
+              <div class="pillar-icon amber"><i class="fa-solid fa-credit-card"></i></div>
+              <span class="pillar-status-pill amber"><i class="fa-solid fa-check"></i> INR OPTIMIZED</span>
+            </div>
+            <h4 class="pillar-card-title">Instant Bank Card Stacker</h4>
+            <p class="pillar-card-desc">Computes exact net INR checkout with HDFC, ICICI, SBI, Axis & UPI. Evaluates 5% unlimited cashback, ₹1,500 instant festival discounts, and computes true No-Cost EMI schedules.</p>
+          </div>
+
+          <!-- Pillar 5 -->
+          <div class="pillar-card wide-pillar">
+            <div class="pillar-card-top">
+              <div class="pillar-icon rose"><i class="fa-solid fa-brain"></i></div>
+              <span class="pillar-status-pill rose"><i class="fa-solid fa-check"></i> 5,878 TRANSACTIONS</span>
+            </div>
+            <h4 class="pillar-card-title">Real ML Dataset (RFM & XAI)</h4>
+            <p class="pillar-card-desc">Unsupervised K-Means clustering running on 5,878 real customer transactions (full_customer_features.csv) with 20 engineered behavioral features. Explainable AI with SHAP feature attribution and LIME local customer condition weights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: Card Stacker & Net Price Calculator -->
+    <div class="tab-pane" id="pane-card-stacker">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-credit-card text-emerald"></i> Bank Card Stacker™ & Net Price Calculator</h2>
+          <p class="section-desc">Select your bank credit card, enter the price, and watch Genius Shoppy calculate your absolute lowest checkout price.</p>
+        </div>
+      </div>
+
+      <div class="stacker-layout">
+        <div class="glass-card stacker-input-card">
+          <h3 class="stacker-card-title"><i class="fa-solid fa-sliders"></i> Configure Purchase</h3>
+          
+          <div class="input-group mt-4">
+            <label class="input-label">Product Base Price (₹):</label>
+            <input type="number" id="calcPriceInput" class="custom-num-input" value="64999" step="500">
+          </div>
+
+          <div class="input-group mt-4">
+            <label class="input-label">Select Your Payment Card / Method:</label>
+            <div class="card-selector-grid">
+              <label class="card-radio-box active">
+                <input type="radio" name="calcCard" value="flipkart_axis" checked>
+                <div class="radio-content">
+                  <span class="card-name">Flipkart Axis Bank</span>
+                  <span class="card-perk">5% Unlimited Cashback</span>
+                </div>
+              </label>
+              <label class="card-radio-box">
+                <input type="radio" name="calcCard" value="amazon_icici">
+                <div class="radio-content">
+                  <span class="card-name">Amazon Pay ICICI</span>
+                  <span class="card-perk">5% Back on Prime</span>
+                </div>
+              </label>
+              <label class="card-radio-box">
+                <input type="radio" name="calcCard" value="hdfc_card">
+                <div class="radio-content">
+                  <span class="card-name">HDFC Bank Credit Card</span>
+                  <span class="card-perk">Flat ₹1,500 Instant Discount</span>
+                </div>
+              </label>
+              <label class="card-radio-box">
+                <input type="radio" name="calcCard" value="sbi_card">
+                <div class="radio-content">
+                  <span class="card-name">SBI Card / SimplyCLICK</span>
+                  <span class="card-perk">10% Off up to ₹1,500</span>
+                </div>
+              </label>
+              <label class="card-radio-box">
+                <input type="radio" name="calcCard" value="upi_pay">
+                <div class="radio-content">
+                  <span class="card-name">UPI (GPay / PhonePe / Paytm)</span>
+                  <span class="card-perk">Flat ₹50 Instant Cashback</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="input-group mt-4">
+            <label class="input-label">Available Coupon Code to Stack:</label>
+            <input type="text" id="calcCouponInput" class="custom-num-input" value="FKAXIS5" placeholder="Enter coupon code...">
+          </div>
+        </div>
+
+        <div class="glass-card stacker-result-card" id="stackerResultCard">
+          <div class="card-header">
+            <span class="card-tag green">Optimized Checkout</span>
+            <span class="savings-percentage" id="calcSavingsPercent">Saved 7.3%</span>
+          </div>
+
+          <div class="stacker-bill-breakdown">
+            <div class="bill-row">
+              <span>Original Store Price</span>
+              <span id="billOriginalPrice">₹64,999</span>
+            </div>
+            <div class="bill-row discount">
+              <span>Bank Card Savings</span>
+              <span id="billBankDiscount">- ₹3,250</span>
+            </div>
+            <div class="bill-row discount">
+              <span>Stacked Coupon Discount</span>
+              <span id="billCouponDiscount">- ₹1,500</span>
+            </div>
+            <div class="bill-row total">
+              <span>Effective Net Price</span>
+              <span class="highlight-total" id="billNetPrice">₹60,249</span>
+            </div>
+          </div>
+
+          <div class="emi-preview-box">
+            <div class="emi-title"><i class="fa-solid fa-calendar-check text-blue"></i> No-Cost EMI Available:</div>
+            <div class="emi-plans">
+              <div class="emi-chip">3 Months: <strong>₹20,083/mo</strong></div>
+              <div class="emi-chip">6 Months: <strong>₹10,041/mo</strong></div>
+              <div class="emi-chip">9 Months: <strong>₹6,694/mo</strong></div>
+            </div>
+          </div>
+
+          <button class="primary-cta-btn" style="width:100%; justify-content:center; padding:0.9rem;" onclick="copyStackedCoupon()">
+            <i class="fa-solid fa-copy"></i> Copy Best Coupon & Open Store
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Extension Live HUD -->
+    <div class="tab-pane" id="pane-simulator">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title"><i class="fa-brands fa-chrome text-blue"></i> Chrome Extension Live Web HUD</h2>
+          <p class="section-desc">Experience how SmartShopper monitors Flipkart & Amazon India tabs directly inside the browser.</p>
+        </div>
+        <div class="simulator-store-toggle">
+          <button class="store-toggle-btn active" id="simStoreFlipkart"><i class="fa-solid fa-bag-shopping text-blue"></i> Flipkart Mode</button>
+          <button class="store-toggle-btn" id="simStoreAmazon"><i class="fa-brands fa-amazon text-amber"></i> Amazon.in Mode</button>
+          <a href="smartshopper_extension.zip" download="smartshopper_extension.zip" class="action-pill-btn download-pill" style="text-decoration:none; padding:0.35rem 0.75rem; font-size:0.75rem;">
+            <i class="fa-solid fa-download"></i> Download .zip
+          </a>
+        </div>
+      </div>
+
+      <div class="simulator-wrapper">
+        <div class="browser-mockup">
+          <div class="browser-toolbar">
+            <div class="browser-window-controls">
+              <span class="control-dot red"></span>
+              <span class="control-dot yellow"></span>
+              <span class="control-dot green"></span>
+            </div>
+            <div class="browser-address-bar">
+              <i class="fa-solid fa-lock text-emerald"></i>
+              <span id="simulatedUrl">https://www.flipkart.com/oneplus-12-silky-black-512-gb/p/itm12345</span>
+            </div>
+            <div class="browser-actions">
+              <button class="ext-icon-btn active" id="simExtensionIcon" title="Toggle SmartShopper Extension">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                <span class="ext-badge-dot"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="browser-body">
+            <div class="mock-product-page">
+              <div class="mock-product-header">
+                <span class="mock-tag" id="simStoreBadge"><i class="fa-solid fa-shield-halved"></i> Flipkart Assured Deal</span>
+                <h2 id="simProductTitle">OnePlus 12 5G (Silky Black, 512 GB) (16 GB RAM)</h2>
+                <div class="mock-rating">
+                  <span class="rating-badge">4.6 <i class="fa-solid fa-star"></i></span>
+                  <span class="rating-count">12,482 Ratings & 1,120 Reviews</span>
+                </div>
+                <div class="mock-price-row">
+                  <span class="current-price" id="simCurrentPrice">₹64,999</span>
+                  <span class="original-price" id="simOriginalPrice">₹69,999</span>
+                  <span class="discount-badge" id="simDiscountBadge">7% off</span>
+                </div>
+              </div>
+              <div class="mock-bank-offers-box">
+                <h4><i class="fa-solid fa-tag text-emerald"></i> Available Bank Offers:</h4>
+                <ul>
+                  <li><strong>Bank Offer:</strong> ₹3,000 Instant Discount on ICICI & HDFC Bank Cards.</li>
+                  <li><strong>Flipkart Axis Bank:</strong> 5% Unlimited Cashback.</li>
+                  <li><strong>No Cost EMI:</strong> Available up to 12 months starting at ₹5,417/month.</li>
+                </ul>
+              </div>
+              <div class="mock-actions-row mt-4">
+                <button class="mock-btn primary"><i class="fa-solid fa-bolt"></i> Buy Now</button>
+                <button class="mock-btn secondary"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- In-Page Simulated Extension Popup -->
+            <div class="simulated-popup" id="simulatedPopup">
+              <div class="popup-header">
+                <div class="popup-brand">
+                  <i class="fa-solid fa-bolt-lightning text-amber"></i>
+                  <span>SmartShopper AI</span>
+                </div>
+                <span class="popup-pill">⚡ Active HUD</span>
+              </div>
+              <div class="popup-body">
+                <p class="popup-help-text">Click below to auto-detect lower prices across Indian stores & check hidden coupons.</p>
+                <button class="popup-analyze-btn" id="simAnalyzeBtn">
+                  <i class="fa-solid fa-bolt"></i> Check Deals on This Page
+                </button>
+                <div class="popup-loader" id="simLoader" style="display:none;">
+                  <i class="fa-solid fa-circle-notch fa-spin"></i> Scanning Flipkart, Amazon, Croma & Reliance...
+                </div>
+                <div class="popup-result-box" id="simResultBox">
+                  No scan performed yet. Click <strong>'Check Deals on This Page'</strong> above!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: Bank Offers & Verified Coupons -->
+    <div class="tab-pane" id="pane-coupons">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-ticket text-emerald"></i> Verified Indian Coupons & Card Vault</h2>
+          <p class="section-desc">Click any coupon to copy code and stack discounts on Flipkart, Amazon, Croma & Myntra.</p>
+        </div>
+      </div>
+
+      <div class="coupons-grid" id="couponsGrid">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+
+    <!-- TAB 5: ML Customer Analytics & Retention Engine -->
+    <div class="tab-pane" id="pane-analytics">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-chart-line text-purple"></i> ML Customer Intelligence (K-Means & XAI)</h2>
+          <p class="section-desc">E-commerce customer grouping by Recency, Frequency, and Monetary spend (INR).</p>
+        </div>
+        <div class="controls-group">
+          <label for="chartTypeSelect" class="control-label">View:</label>
+          <select id="chartTypeSelect" class="custom-select">
+            <option value="bar">Bar Chart</option>
+            <option value="doughnut">Doughnut</option>
+            <option value="polarArea">Polar Area</option>
+          </select>
+          <button class="btn-refresh" id="refreshChartsBtn">
+            <i class="fa-solid fa-arrows-rotate"></i> Sync Data
+          </button>
+        </div>
+      </div>
+
+      <div class="grid-2-col">
+        <div class="glass-card chart-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="card-tag purple">Segmentation</span>
+              <h3>Customer Tier Breakdown (India)</h3>
+            </div>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="rfmMainChart"></canvas>
+          </div>
+          <div class="chart-footer">
+            <p><i class="fa-solid fa-circle-info"></i> Segmented using Recency, Frequency, and Lifetime Order Spend in Indian Rupees (₹).</p>
+          </div>
+        </div>
+
+        <div class="glass-card chart-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="card-tag blue">AI Attribution</span>
+              <h3>What Drives Repeat Shoppers?</h3>
+            </div>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="xaiChart"></canvas>
+          </div>
+          <div class="chart-footer">
+            <p><i class="fa-solid fa-lightbulb text-amber"></i> Repeat purchase frequency and order value have the highest influence on customer retention.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ML Retrain Hub -->
+      <div class="glass-card mt-6">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-tag purple">Machine Learning Engine</span>
+            <h3>K-Means Model & Feature Dataset (full_customer_features.csv)</h3>
+          </div>
+          <button class="primary-cta-btn" id="btnRetrainModel" onclick="triggerModelRetrain()">
+            <i class="fa-solid fa-gears"></i> Retrain K-Means Model
+          </button>
+        </div>
+        <div class="ml-status-grid" id="mlStatusGrid">
+          <div class="profile-stat-box">
+            <div class="val text-blue" id="mlDatasetRecords">5,878</div>
+            <div class="lbl">Transactions Dataset (Records)</div>
+          </div>
+          <div class="profile-stat-box">
+            <div class="val text-emerald" id="mlClustersCount">3 Clusters</div>
+            <div class="lbl">K-Means Optimal Clusters (Elbow Method)</div>
+          </div>
+          <div class="profile-stat-box">
+            <div class="val text-amber">20 Features</div>
+            <div class="lbl">Engineered Features (Recency, Frequency, Spend)</div>
+          </div>
+          <div class="profile-stat-box">
+            <div class="val text-purple" id="mlStatusState">Trained & Ready</div>
+            <div class="lbl">Model Pipeline Status</div>
+          </div>
+        </div>
+        <div id="retrainAlert" style="display:none; margin-top:1rem; padding:0.8rem; background:rgba(16,185,129,0.15); border:1px solid #10b981; border-radius:8px; font-size:0.88rem; color:#6ee7b7;">
+          <i class="fa-solid fa-check-circle"></i> K-Means model retrained successfully! 5,878 customer records re-clustered.
+        </div>
+      </div>
+
+      <!-- Business Rules -->
+      <div class="glass-card rules-card mt-6">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-tag green">Automation Rules</span>
+            <h3>Automated Retail Growth Strategies (business_rules.csv)</h3>
+          </div>
+          <span class="status-pill active"><i class="fa-solid fa-check-circle"></i> 4 Active Rules</span>
+        </div>
+        <div class="rules-grid" id="rulesGrid">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: Real Customer Dataset Explorer -->
+    <div class="tab-pane" id="pane-profiler">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-database text-emerald"></i> Real-Time Customer Dataset Explorer</h2>
+          <p class="section-desc">Search across 5,878 real customer transactions loaded from <code>full_customer_features.csv</code>.</p>
+        </div>
+        <div class="search-customer-bar">
+          <input type="number" id="customerSearchInput" class="customer-search-input" placeholder="Customer ID (e.g. 12347)" value="12347">
+          <button class="btn-lookup" id="btnLookupCustomer">Search Record</button>
+        </div>
+      </div>
+
+      <div class="customer-profile-layout">
+        <div class="glass-card profile-details-card" id="profileDetailsCard">
+          <!-- Injected via app.js -->
+        </div>
+
+        <div class="glass-card profile-action-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="card-tag green">Retention Action</span>
+              <h3>Marketing Automation Strategy</h3>
+            </div>
+          </div>
+          <div class="action-card-content" id="profileActionContent">
+            <!-- Injected via app.js -->
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card mt-6">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-tag blue">Real Project Dataset</span>
+            <h3>5,878 Real Customer Transactions (full_customer_features.csv)</h3>
+          </div>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <input type="text" id="filterTableInput" placeholder="Filter by ID or spend..." style="background:rgba(0,0,0,0.3); border:1px solid var(--border-subtle); color:#fff; padding:0.4rem 0.8rem; border-radius:6px; font-size:0.85rem;">
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="modern-table">
+            <thead>
+              <tr>
+                <th>Customer ID</th>
+                <th>Recency</th>
+                <th>Orders (Freq)</th>
+                <th>Lifetime Spend (₹)</th>
+                <th>Avg Order Value</th>
+                <th>Loyalty Tier</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="customerTableBody">
+              <!-- Injected via app.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="table-pagination" id="tablePagination">
+          <!-- Pagination injected via app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 7: Vercel Hosting Guide -->
+    <div class="tab-pane" id="pane-guide">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-rocket text-purple"></i> Instant Vercel Hosting & Running Steps</h2>
+          <p class="section-desc">Host this website on Vercel for free in under 1 minute, or run locally on your machine.</p>
+        </div>
+      </div>
+
+      <div class="guide-grid">
+        <div class="glass-card guide-step-card" id="quick-demo">
+          <div class="guide-card-icon purple"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+          <h3>1. Deploy to Vercel (1-Command)</h3>
+          <p>Everything is pre-configured with <code>vercel.json</code>. Run this command in terminal:</p>
+          
+          <div class="code-snippet-box">
+            <div class="code-title">Run in Terminal</div>
+            <code>
+              # 1. Deploy immediately<br>
+              npx vercel<br><br>
+              # 2. Deploy to Production URL:<br>
+              npx vercel --prod
+            </code>
+          </div>
+          <p class="mt-3" style="font-size:0.85rem; color:#94a3b8;">
+            You will get a live URL (e.g. <code>https://genius-shoppy.vercel.app</code>) that you can open on any phone or laptop!
+          </p>
+        </div>
+
+        <div class="glass-card guide-step-card">
+          <div class="guide-card-icon green"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3>2. Run Website Locally</h3>
+          <p>You can run this website on your laptop instantly:</p>
+          
+          <div class="code-snippet-box">
+            <div class="code-title">Python or Node</div>
+            <code>
+              # Option 1: Python<br>
+              python -m http.server 3000<br><br>
+              # Then open:<br>
+              http://localhost:3000
+            </code>
+          </div>
+        </div>
+
+        <div class="glass-card guide-step-card">
+          <div class="guide-card-icon blue"><i class="fa-brands fa-chrome"></i></div>
+          <h3>3. Load Chrome Extension</h3>
+          <p>Test the real extension on Flipkart and Amazon.in:</p>
+          
+          <ol class="guide-steps-list">
+            <li>Download <a href="smartshopper_extension.zip" download="smartshopper_extension.zip" style="color:#38bdf8;">smartshopper_extension.zip</a> and unzip it.</li>
+            <li>Open Chrome and go to <code>chrome://extensions/</code></li>
+            <li>Enable <strong>Developer mode</strong> (toggle on top right).</li>
+            <li>Click <strong>"Load unpacked"</strong> and select the extension folder!</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Floating AI Copilot Trigger -->
+  <button class="floating-copilot-btn" id="openCopilotBtn" onclick="toggleCopilot()" aria-label="Open AI Shopping Copilot">
+    <i class="fa-solid fa-bolt text-amber"></i>
+    <span class="copilot-btn-text">AI Deal Copilot</span>
+  </button>
+
+  <!-- AI Copilot Slideout Drawer -->
+  <div class="copilot-drawer" id="copilotDrawer">
+    <div class="copilot-drawer-header">
+      <div class="copilot-brand">
+        <div class="logo-icon small"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <div>
+          <h4>SmartShopper AI Copilot</h4>
+          <span class="copilot-status"><i class="fa-solid fa-circle text-emerald"></i> Online & Intelligent</span>
+        </div>
+      </div>
+      <button class="copilot-close-btn" onclick="toggleCopilot()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="copilot-chat-body" id="copilotChatBody">
+      <div class="copilot-message ai">
+        <div class="message-bubble">
+          ⚡ <strong>SmartShopper Copilot Online:</strong> Ask me anything about deals, bank discounts, lowest prices across Flipkart & Amazon India, or customer analytics trends!
+        </div>
+      </div>
+    </div>
+
+    <div class="copilot-quick-prompts">
+      <span class="prompt-label">Quick Questions:</span>
+      <button class="prompt-chip" onclick="askCopilotPrompt('Which phone has the best bank discount under ₹30,000 right now?')">Best phone under ₹30K?</button>
+      <button class="prompt-chip" onclick="askCopilotPrompt('Should I buy OnePlus 12 now or wait for Flipkart Big Billion Days?')">Buy OnePlus 12 now?</button>
+      <button class="prompt-chip" onclick="askCopilotPrompt('How to maximize HDFC and Axis bank card offers?')">Best Card Offers</button>
+    </div>
+
+    <div class="copilot-input-bar">
+      <input type="text" id="copilotInput" placeholder="Ask deal question or paste product name..." onkeydown="if(event.key==='Enter') sendCopilotMessage()">
+      <button id="sendCopilotBtn" onclick="sendCopilotMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <div class="bottom-mobile-nav">
+    <button class="mobile-nav-item active" onclick="switchTab('deal-finder')" id="mobTabDeals">
+      <i class="fa-solid fa-radar"></i><span>Deals</span>
+    </button>
+    <button class="mobile-nav-item" onclick="switchTab('card-stacker')" id="mobTabStacker">
+      <i class="fa-solid fa-credit-card"></i><span>Calculator</span>
+    </button>
+    <button class="mobile-nav-item" onclick="switchTab('simulator')" id="mobTabSimulator">
+      <i class="fa-brands fa-chrome"></i><span>Extension</span>
+    </button>
+    <button class="mobile-nav-item" onclick="switchTab('coupons')" id="mobTabCoupons">
+      <i class="fa-solid fa-ticket"></i><span>Coupons</span>
+    </button>
+    <button class="mobile-nav-item" onclick="toggleCopilot()">
+      <i class="fa-solid fa-bolt text-amber"></i><span>AI Copilot</span>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-icon small"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <span>Genius Shoppy India — Next-Gen Retail Intelligence</span>
+      </div>
+      <p class="footer-text">Built for Indian shoppers & retail analysts. Optimized for Flipkart, Amazon.in, Croma, Reliance Digital & Myntra.</p>
+      <div class="footer-links">
+        <button class="footer-link-btn" onclick="switchTab('guide')"><i class="fa-solid fa-cloud"></i> Deploy to Vercel</button>
+        <a href="smartshopper_extension.zip" download="smartshopper_extension.zip" class="footer-link-btn"><i class="fa-solid fa-download"></i> Extension (.zip)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Genius Shoppy Toast Notification -->
+  <div class="genius-toast" id="geniusToast">
+    <i class="fa-solid fa-bolt-lightning text-amber"></i>
+    <span id="geniusToastText">Action successful!</span>
+  </div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
